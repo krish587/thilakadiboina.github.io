@@ -1,0 +1,187 @@
+---
+---
+
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* =========================================================
+   Thilak Adiboina: "Deep Teal Research" theme for Chirpy
+   Fonts are loaded in _includes/metadata-hook.html
+   ========================================================= */
+
+/* ---------- Colors (light mode) ---------- */
+html:not([data-mode]),
+html[data-mode='light'] {
+  /* Page */
+  --main-bg: #fcfcfa;
+  --mask-bg: #c1c3c5;
+  --main-border-color: #e6e8e6;
+  --text-color: #1f2937;
+  --text-muted-color: #6b7280;
+  --text-muted-highlight-color: #4b5563;
+  --heading-color: #0b1f2a;
+  --label-color: #6b7280;
+
+  /* Links */
+  --link-color: #0f766e;
+  --link-underline-color: #99d5cf;
+
+  /* Cards (post list) */
+  --card-bg: #ffffff;
+  --card-hovor-bg: #f3faf9; /* "hovor" is Chirpy's own spelling */
+  --card-shadow: rgba(11, 31, 42, 0.06) 0 2px 8px 0, rgba(11, 31, 42, 0.04) 0 0 0 1px;
+
+  /* Sidebar */
+  --sidebar-bg: #0b1f2a;
+  --sidebar-border-color: #0b1f2a;
+  --sidebar-muted-color: #a7b8c2;
+  --sidebar-active-color: #ffffff;
+  --sidebar-hover-bg: #12303f;
+  --sidebar-btn-bg: #12303f;
+  --sidebar-btn-color: #a7b8c2;
+  --avatar-border-color: rgba(255, 255, 255, 0.2);
+  --site-title-color: #ffffff;
+  --site-subtitle-color: #a7b8c2;
+
+  /* Top bar and search */
+  --topbar-bg: rgba(252, 252, 250, 0.85);
+  --topbar-text-color: #4b5563;
+  --search-border-color: #e6e8e6;
+  --search-icon-color: #9ca3af;
+  --input-focus-border-color: #0f766e;
+
+  /* Content details */
+  --blockquote-border-color: #99d5cf;
+  --blockquote-text-color: #4b5563;
+  --inline-code-bg: #eef6f5;
+  --code-color: #0b4f4a;
+  --tag-hover: #d5eeeb;
+  --toc-highlight: #0f766e;
+  --tb-odd-bg: #f7f9f8;
+  --tb-border-color: #e6e8e6;
+  --footnote-target-bg: #e6f4f2;
+
+  /* Buttons, pagination, share */
+  --button-bg: #ffffff;
+  --btn-border-color: #e6e8e6;
+  --btn-backtotop-color: #4b5563;
+  --btn-backtotop-border-color: #e6e8e6;
+  --btn-share-color: #6b7280;
+  --btn-share-hover-color: #0f766e;
+  --btn-paginator-hover-color: #e6f4f2;
+  --btn-paginator-border-color: #e6e8e6;
+  --btn-text-color: #4b5563;
+
+  /* Categories and archives timeline */
+  --categories-border: rgba(0, 0, 0, 0.08);
+  --categories-hover-bg: #f3faf9;
+  --categories-icon-hover-color: #0f766e;
+  --timeline-color: #e6e8e6;
+  --timeline-node-bg: #99d5cf;
+  --timeline-year-dot-color: #ffffff;
+  --relate-post-date: #6b7280;
+  --post-list-text-color: #4b5563;
+}
+
+/* ---------- Colors (dark mode, used only if theme_mode is empty or dark) ---------- */
+html[data-mode='dark'] {
+  --main-bg: #11181c;
+  --main-border-color: #22323a;
+  --text-color: #e5e7eb;
+  --text-muted-color: #9aa5ab;
+  --heading-color: #f3f4f6;
+  --link-color: #2dd4bf;
+  --link-underline-color: #115e59;
+  --card-bg: #172126;
+  --card-hovor-bg: #1c2a30;
+  --sidebar-bg: #0a161d;
+  --sidebar-border-color: #0a161d;
+  --sidebar-muted-color: #9fb1bb;
+  --sidebar-active-color: #ffffff;
+  --sidebar-hover-bg: #12303f;
+  --sidebar-btn-bg: #12303f;
+  --site-title-color: #ffffff;
+  --topbar-bg: rgba(17, 24, 28, 0.85);
+  --inline-code-bg: #1c2a30;
+  --code-color: #99f6e4;
+  --toc-highlight: #2dd4bf;
+}
+
+/* ---------- Fonts ---------- */
+body {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+}
+
+h1, h2, h3, h4, h5, h6,
+#sidebar,
+#topbar-wrapper,
+#search-input,
+.post-meta,
+.post-tail-wrapper,
+.card-title,
+.card-text .meta,
+#panel-wrapper,
+footer,
+.btn,
+.pagination,
+.post-tag,
+.categories {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+code, pre, kbd, .highlight {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ---------- Reading comfort ---------- */
+.content {
+  line-height: 1.8;
+}
+.content p {
+  margin-bottom: 1.25rem;
+}
+.content h2 {
+  margin-top: 2.5rem;
+}
+
+/* ---------- Sidebar text (fallback in case the color variables above don't apply) ---------- */
+#sidebar {
+  background: var(--sidebar-bg);
+}
+#sidebar .site-title,
+#sidebar .site-title a {
+  color: #ffffff;
+}
+#sidebar .site-subtitle {
+  color: #a7b8c2;
+}
+#sidebar .nav-link {
+  color: #a7b8c2;
+}
+#sidebar .nav-item.active .nav-link,
+#sidebar .nav-link:hover {
+  color: #ffffff;
+}
+#sidebar .sidebar-bottom a,
+#sidebar .sidebar-bottom button {
+  color: #a7b8c2;
+}
+#sidebar .sidebar-bottom a:hover {
+  color: #ffffff;
+}
+
+/* ---------- Post list cards ---------- */
+#post-list .card-wrapper .card {
+  border-radius: 12px;
+}
+#post-list .card-title {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+#post-list .card-wrapper:hover .card-title {
+  color: var(--link-color);
+}
