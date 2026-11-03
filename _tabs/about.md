@@ -1,3 +1,9 @@
+---
+# the default layout is 'page'
+icon: fas fa-info-circle
+order: 4
+---
+
 **Bala Gangadhar Thilak Adiboina**
 AI Science ¬∑ Causal AI ¬∑ Agentic AI ¬∑ Decision Intelligence ¬∑ Research
 
