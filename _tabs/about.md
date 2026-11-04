@@ -5,7 +5,7 @@ order: 4
 ---
 
 **Bala Gangadhar Thilak Adiboina**
-AI Science ¬∑ Causal AI ¬∑ Agentic AI ¬∑ Decision Intelligence ¬∑ Research
+AI Science ¬∑ Causal AI | Agentic AI | Decision Intelligence | Research
 
 ## About Me
 
