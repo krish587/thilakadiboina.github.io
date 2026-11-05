@@ -1,13 +1,13 @@
 ---
 title: "Can We Improve Small AI Models Without Training Them Again? What If AI Could Fix AI?"
-description: "Two new research papers explore how AI can learn from a weaker version of itself‚Äîand even identify and fix problems in another AI model. An accessible WISD and Weight-Space Programming explanation with a Gemma LoRA example."
+description: "Two new research papers explore how AI can learn from a weaker version of itself—and even identify and fix problems in another AI model. An accessible WISD and Weight-Space Programming explanation with a Gemma LoRA example."
 date: 2026-11-04 10:00:00 +0530
 categories: [AI Research, LLMs]
 tags: [ai, gemma, fine-tuning, lora, wisd, weight-space-programming]
 redirect_from: /posts/improving-ai-models-without-retraining/
 ---
 
-*Two new research papers explore how AI can learn from a weaker version of itself‚Äîand even identify and fix problems in another AI model.*
+*Two new research papers explore how AI can learn from a weaker version of itself—and even identify and fix problems in another AI model.*
 
 Most of us use AI in a simple way. We ask a question, look at the answer, and change the prompt if something is missing.
 
@@ -24,11 +24,11 @@ These are **two distinct research methods**. One still trains the model, but lea
 
 ## A simple example: teaching an AI to answer better
 
-Suppose a customer asks, ‚ÄúWhy is my bill higher this month?‚Äù
+Suppose a customer asks, “Why is my bill higher this month?”
 
-A poor assistant might invent a reason: ‚ÄúYour plan price went up.‚Äù
+A poor assistant might invent a reason: “Your plan price went up.”
 
-A better assistant would say something like: ‚ÄúThere could be several reasons, such as one-time charges or a change in usage. I would need to check the bill before confirming the cause.‚Äù
+A better assistant would say something like: “There could be several reasons, such as one-time charges or a change in usage. I would need to check the bill before confirming the cause.”
 
 How can we get more responses like the second one? There are several options. Some are ready to use today. Others are still research.
 
@@ -99,7 +99,7 @@ This made me think about a practical scenario. Suppose we have thousands of genu
 
 **Can we do this with Gemma today?** It is an interesting experiment, not a ready-made recipe. The published implementation is centered on other reasoning models, and the public training examples have substantial compute requirements. We'd first reproduce the supported WISD workflow, then adapt it to a permitted Gemma model and test whether the improvement transfers. We should not assume it will.
 
-[Read the WISD paper](https://arxiv.org/abs/2610.38681) ¬∑ [Explore the WISD code](https://github.com/jet-ai-projects/WISD)
+[Read the WISD paper](https://arxiv.org/abs/2610.38681) · [Explore the WISD code](https://github.com/jet-ai-projects/WISD)
 
 ## 3. Weight-Space Programming: can we fix one problem directly?
 
@@ -147,7 +147,7 @@ The Qwen math result got most of the attention, but the researchers actually exp
 | **Understand language** | Show it the middle layers of small language models, without the input or output layers | It identified which models had learned Python, English or romanized Japanese and found copying-related attention heads |
 | **Repair a car controller** | Give it a model that repeatedly failed to drive over a ramp | One direct edit to **3.5%** of the weights raised success from **0% to 100%** in the reported evaluation |
 | **Build game-playing models** | Ask it to write neural network weights for Breakout, Seaquest and Asterix from scratch | Its networks beat a PPO baseline trained for 100 million steps on all three games; comparisons with stronger baselines were mixed |
-| **Play Go** | Write the weights of a 1.5-million-parameter network for 9√ó9 Go | With a limited number of practice runs, it outperformed an equal-sized PPO baseline trained on 20 million games |
+| **Play Go** | Write the weights of a 1.5-million-parameter network for 9×9 Go | With a limited number of practice runs, it outperformed an equal-sized PPO baseline trained on 20 million games |
 | **Identify a yes-man AI** | Compare two fine-tuned Gemma 3 270M models, one trained to agree with incorrect user suggestions | Looking at weights alone **failed**; observing attention patterns helped it identify the sycophantic model in all three tested pairs |
 | **Fix repetitive reasoning** | Edit Qwen3.5-0.8B to reduce repeated thinking loops | The reported MATH-500 score rose from **7.9% to 48.1%**, and instruction following improved too |
 
@@ -161,13 +161,13 @@ For **Breakout**, the agent worked out that one part of the network should estim
 
 That is impressive, but there are important boundaries: the networks and game worlds were small, and the comparison PPO baseline used standard settings rather than a carefully tuned state-of-the-art configuration. This does **not** show that we can generate an enterprise language model from scratch in the same way.
 
-When the team moved to a bigger **1.5-million-weight Go network**, the agent needed Python tools to construct the network and was allowed to test it with up to 50 batches of game evaluations. Again, the lesson is the same: **a model can propose an internal program and improve it from feedback‚Äîbut scale and feedback cost matter.**
+When the team moved to a bigger **1.5-million-weight Go network**, the agent needed Python tools to construct the network and was allowed to test it with up to 50 batches of game evaluations. Again, the lesson is the same: **a model can propose an internal program and improve it from feedback—but scale and feedback cost matter.**
 
 #### Why the Gemma "yes-man" experiment matters
 
 Imagine asking an AI: *"I think this bill is wrong because the tax was doubled. Am I right?"* An overly agreeable assistant may say *"Yes"* without checking. A better assistant asks for the bill or explains what needs to be verified.
 
-The researchers created two Gemma models: one encouraged to give correct answers and another to agree with a user's guess even when it was wrong. **The AI could not tell them apart from static weights alone, despite four attempts.** When it was allowed to run carefully chosen questions and look at *attention patterns only*‚Äînot the actual answers‚Äîit identified the overly agreeable model in all three model pairs tested.
+The researchers created two Gemma models: one encouraged to give correct answers and another to agree with a user's guess even when it was wrong. **The AI could not tell them apart from static weights alone, despite four attempts.** When it was allowed to run carefully chosen questions and look at *attention patterns only*—not the actual answers—it identified the overly agreeable model in all three model pairs tested.
 
 Here is the memorable part. In one attention head, the model trained to give correct answers paid **94.3% of its attention** to the question's numbers and just **0.75%** to the answer suggested by the user. The overly agreeable model paid **85.7%** to the user's suggested answer. Those percentages describe **one attention head in one example**, not the entire model's reasoning. Attention alone does not establish why a model behaves a particular way.
 
@@ -193,7 +193,7 @@ The investigation went roughly like this:
 4. **Make a targeted repair.** It adjusted **131,072 weight entries**, about **0.016%** of the model, to reduce that repeated-loop behavior.
 5. **Check new problems.** The final edit was evaluated on separate benchmarks. The agent did not see those test-set answers during the repair process.
 
-The 50-forward-pass version produced the results below. A *forward pass* here means a permitted batch of model executions‚Äînot a training update.
+The 50-forward-pass version produced the results below. A *forward pass* here means a permitted batch of model executions—not a training update.
 
 | Measure | Original Qwen | After the targeted edit |
 | --- | ---: | ---: |
@@ -241,13 +241,13 @@ The practical question is not which research technique sounds most impressive. I
 | It repeatedly gets stuck in one specific behavior | Research whether a targeted repair is possible, with a strong regression test |
 | It keeps agreeing with incorrect user assumptions | Test sycophancy directly; don't rely on attention patterns as proof |
 
-For an AI customer-support assistant, I would start with prompting, good data and LoRA‚Äînot experimental weight editing. The newer methods are interesting *research tracks* we can compare later.
+For an AI customer-support assistant, I would start with prompting, good data and LoRA—not experimental weight editing. The newer methods are interesting *research tracks* we can compare later.
 
 ## 4. Let's try something real: fine-tuning Gemma on public data
 
 Now for the practical part. You don't need to understand every line of Python to follow the experiment. The idea is simple: **teach Gemma a response pattern, then compare it with the original model on questions neither version saw during training**.
 
-We're **not** claiming to reproduce WISD or Weight-Space Programming on Gemma here. We'll start with the established method‚Äî**LoRA**‚Äîand build a clean baseline that future experiments could compare against.
+We're **not** claiming to reproduce WISD or Weight-Space Programming on Gemma here. We'll start with the established method—**LoRA**—and build a clean baseline that future experiments could compare against.
 
 ### Step 1: Choose a small model
 
@@ -274,7 +274,7 @@ The public data is for learning **how an answer is written**, not for making up 
 
 ### Step 3: Run LoRA training
 
-Download the [starter code package](/assets/gemma_three_ways_code.zip) and unpack it. The package contains the training script, evaluation script, setup notes, and initial requirements.
+Download the [starter code package](/assets/Gemma_LoRA_Training_Fresh.zip) and unpack it. The package contains the training script, evaluation script, setup notes, and initial requirements.
 
 In a suitable GPU environment, after installing a compatible CUDA-enabled PyTorch build:
 
@@ -336,11 +336,11 @@ The same script now supports a local CSV with `instruction` and `response` colum
 
 This is the experiment I would run **after** establishing a useful Gemma baseline:
 
-**A. LoRA baseline ‚Äî practical now.** Train Gemma on labelled answers, test on unseen examples, and record quality, GPU cost, and speed.
+**A. LoRA baseline — practical now.** Train Gemma on labelled answers, test on unseen examples, and record quality, GPU cost, and speed.
 
-**B. WISD research track ‚Äî still involves training.** Use the **training questions without answers** as candidate unlabelled prompts. First reproduce the researchers' supported **Qwen reference experiment**. Then explore Gemma-specific weakening, paired scoring, and student training. The repository does **not** provide a verified one-click Gemma run. Evaluate with trusted answers held out from training.
+**B. WISD research track — still involves training.** Use the **training questions without answers** as candidate unlabelled prompts. First reproduce the researchers' supported **Qwen reference experiment**. Then explore Gemma-specific weakening, paired scoring, and student training. The repository does **not** provide a verified one-click Gemma run. Evaluate with trusted answers held out from training.
 
-**C. Weight-Space Programming research track ‚Äî no ordinary gradient fine-tuning.** Look for one narrow, repeated model failure; test whether a prompt change fixes it first. If it does not, examine whether an interpretable circuit or activation pattern contributes to the failure. Only then explore targeted edits with controls and regression tests. Keep the original checkpoint. The published Gemma math experiment showed little improvement, so this is a research question‚Äînot a shortcut we can promise.
+**C. Weight-Space Programming research track — no ordinary gradient fine-tuning.** Look for one narrow, repeated model failure; test whether a prompt change fixes it first. If it does not, examine whether an interpretable circuit or activation pattern contributes to the failure. Only then explore targeted edits with controls and regression tests. Keep the original checkpoint. The published Gemma math experiment showed little improvement, so this is a research question—not a shortcut we can promise.
 
 The important point is to compare **end-to-end costs** and results. WISD has actual training costs. Weight editing may use expensive model reasoning and trial runs. LoRA also uses compute. Changing fewer weights does not automatically mean a cheaper or better method.
 
@@ -352,7 +352,7 @@ I think the lesson is that **improving AI should start with understanding the fa
 
 If the problem is unclear instructions, fix the prompt. If the answer needs current information, retrieve it from a reliable source. If a model needs to learn a repeated response pattern, fine-tuning with good examples can help.
 
-If we have many questions without labelled answers, **WISD** suggests another way to learn‚Äîthough it still needs training and careful evaluation. If we have a narrow, repeatable failure, **Weight-Space Programming** suggests a different research direction: diagnose the cause and test a targeted weight edit.
+If we have many questions without labelled answers, **WISD** suggests another way to learn—though it still needs training and careful evaluation. If we have a narrow, repeatable failure, **Weight-Space Programming** suggests a different research direction: diagnose the cause and test a targeted weight edit.
 
 **Maybe the next step is not simply feeding models more examples. It is understanding when we need examples, when learning from a weaker copy may help, and when a targeted repair is the better question to investigate.**
 
@@ -362,14 +362,14 @@ That is what makes these studies interesting to me.
 
 ### Research and resources
 
-- [WISD paper ‚Äî *Weaken to Strengthen* (October 2026)](https://arxiv.org/abs/2610.38681)
+- [WISD paper — *Weaken to Strengthen* (October 2026)](https://arxiv.org/abs/2610.38681)
 - [WISD code and documented Qwen workflow](https://github.com/jet-ai-projects/WISD)
-- [Weight-Space Programming ‚Äî MIT CSAIL (November 2026)](https://rikiyat.github.io/blog/weight-space-programming/)
+- [Weight-Space Programming — MIT CSAIL (November 2026)](https://rikiyat.github.io/blog/weight-space-programming/)
 - [Edited Qwen checkpoint and independent reproduction](https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming)
-- [Matthew Honnibal ‚Äî why the experiments need careful interpretation](https://honnibal.dev/blog/astra-read-write-misleading)
+- [Matthew Honnibal — why the experiments need careful interpretation](https://honnibal.dev/blog/astra-read-write-misleading)
 - [Gemma 3 270M model](https://huggingface.co/google/gemma-3-270m-it)
 - [Bitext public customer-support data](https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset)
 - [Hugging Face LoRA training guide](https://huggingface.co/docs/trl/sft_trainer)
-- [Download the starter scripts](/assets/gemma_three_ways_code.zip)
+- [Download the starter scripts](/assets/Gemma_LoRA_Training_Fresh.zip)
 
 *Note: This article represents my independent views and experiments, not those of my employer. The Gemma training code is provided for learning and has not been benchmarked end-to-end here. Follow the model and dataset license terms, and use only authorized data.*
