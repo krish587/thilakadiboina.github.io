@@ -23,7 +23,7 @@ github:
   username:  # change to your GitHub username
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: thilakadiboina # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -33,7 +33,7 @@ social:
   fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/thilakai # change to your Twitter homepage
+    - https://twitter.com/thilakadiboina # change to your Twitter homepage
     - https://github.com/thilakai # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -54,7 +54,7 @@ webmaster_verifications:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: GTM-PMSMMF9S
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:
